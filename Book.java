@@ -3,10 +3,10 @@ public class Book{
     private String author;
     private boolean visibleAll;
     /**
-     * 一本书
      * 
-     * @param  title  书名
-     * @param  author  作家
+     * 
+     * @param  title  
+     * @param  author  
      * @param  visible  
      */
     public Book(String title, String author, boolean visible){
