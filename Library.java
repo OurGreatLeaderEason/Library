@@ -2,6 +2,7 @@ import java.util.ArrayList;
 public class Library{
     private ArrayList<Account> accounts;
     private ArrayList<Book> books;
+    private ArrayList<Book> pool;
     private Account account;
     
     public Library(ArrayList<Book> books){
@@ -127,6 +128,7 @@ public class Library{
      */
     public void borrowBook(Book book){
         if(this.search(book)==true){
+            
             this.account.addBook(book);
             removeBook(book);
         }
@@ -136,16 +138,18 @@ public class Library{
     }
     
     /**
-     * removes a book from the user's booklist and return it to the library
+     * removes a book from the user's booklist and return it to the pool
      */
     public void returnBook(Book book){
         if(this.account.search(book)==true){
             int index=this.account.getIndex(book);
-            this.books.add(this.account.getBooks().get(index));
+            this.pool.add(book);
             this.account.removeBook(book);
             
         }
     }
+    
+    
     
     
     

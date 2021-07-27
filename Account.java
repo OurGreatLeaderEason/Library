@@ -87,14 +87,15 @@ public class Account{
         return this.status;
     }
     
-    public void addBook(Book book){
-        this.books.add(book);
-    }
+    
     
     public ArrayList<Book> getBooks(){
         return this.books;
     }
     
+    public void addBook(Book book){
+        this.books.add(book);
+    }
    
     
     
