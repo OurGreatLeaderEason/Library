@@ -4,42 +4,17 @@ public class User extends Account{
     private ArrayList<Book> books;
     public User(String name, String password){
         super(name, password);
-        this.status=true;
+        this.status=false;
+        this.books=new ArrayList<Book>();
     }
     
     public void setBooks(ArrayList<Book> books){
         this.books=books;
     }
     
-    public ArrayList<Book> borrow(ArrayList<Book> library, Book book){
-        boolean availability=this.search(library, book);
-        if (availability==true && library.size()>0){
-            int index=this.getIndex(library, book);
-            library.remove(index);
-            this.books.add(book);
-            return library;
-        }
-        else{
-            System.out.println("The book cannot be found");
-            return library;
-        }
-    }
     
-    public ArrayList<Book> returnBook(ArrayList<Book> library, Book book){
-        boolean availability=search(this.books, book);
-        if (availability==true){
-            int index=this.getIndex(this.books, book);
-            this.books.remove(index);
-            library.add(book);
-            return library;
-        }
-        else{
-            System.out.println("You don't have this book");
-            return library;
-        }
-            
-        
-    }
+    
+    
     
     public String toString(){
         String text="";
@@ -54,6 +29,9 @@ public class User extends Account{
             System.out.println(book.getTitle()+"\n");
         }
     }
+    
+    
+    
     
     
     

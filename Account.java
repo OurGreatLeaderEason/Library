@@ -3,6 +3,7 @@ public class Account{
     private String username;
     private String password;
     private boolean status;
+    private ArrayList<Book> books;
     
     /**
      * ??????
@@ -51,8 +52,19 @@ public class Account{
         this.username=newUsername;
     }
     
-    public boolean search(ArrayList<Book> books, Book book){
-        int lang=books.size();
+    public void removeBook(Book book){
+        boolean tf=this.search(book);
+        if(tf==true){
+            this.books.remove(this.getIndex(book));
+        }
+        else{
+            System.out.println("You don't have this book");
+        }
+        
+    }
+    
+    public boolean search(Book book){
+        int lang=this.books.size();
         for (int i=0; i<lang; i++){
             if (books.get(i).getTitle().equals(book.getTitle())){
                 return true;
@@ -62,17 +74,25 @@ public class Account{
         
     }
     
-    public int getIndex(ArrayList<Book> library, Book book){
-        for (int i=0; i<library.size(); i++){
-            if (library.get(i).getTitle().equals(book.getTitle())){
+    public int getIndex(Book book){
+        for (int i=0; i<this.books.size(); i++){
+            if (this.books.get(i).getTitle().equals(book.getTitle())){
                 return i;
             }
         }
-        return 0;
+        return Integer.MAX_VALUE;
     }
     
     public boolean isAdmin(){
         return this.status;
+    }
+    
+    public void addBook(Book book){
+        this.books.add(book);
+    }
+    
+    public ArrayList<Book> getBooks(){
+        return this.books;
     }
     
    
