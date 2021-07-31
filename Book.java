@@ -1,7 +1,8 @@
 public class Book{
     private String title;
-    private String author;
-    private boolean visibleAll;
+   
+    private boolean visible;
+    private String info;
     /**
      * 
      * 
@@ -9,19 +10,23 @@ public class Book{
      * @param  author  
      * @param  visible  
      */
-    public Book(String title, String author, boolean visible){
+    public Book(String title, String info, boolean visible){
         this.title=title;
-        this.author=author;
-        this.visibleAll=visible;
+        this.info=info;
+        this.visible=visible;
     }
+    
     public String getTitle(){
         return this.title;
     }
+    
     public boolean getVisibility(){
-        return this.visibleAll;
+        return this.visible;
     }
-    public String getAuthor(){
-        return this.author;
+    
+    public String getInfo(){
+        return this.info;
     }
+   
     
 }
