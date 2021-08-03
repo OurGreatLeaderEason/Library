@@ -162,6 +162,7 @@ public class UI{
         else if(choice.equals("3")){
         }
         else if(choice.equals("4")){
+            this.viewMyBooks();
         }
         else if(choice.equals("5")){
             this.currentUser=null;
@@ -263,17 +264,134 @@ public class UI{
     public void search(){
         Scanner kbReader=new Scanner(System.in);
         System.out.println("Please enter the book's title");
-        String title=kbReader.next();
-        for(Book book:this.library){
-            String t=book.getTitle();
-            if(t.equals(title)){
-                System.out.println("match");
+        String title=kbReader.nextLine();
+        int count=0;
+        for(int i=0; i<this.library.size(); i++){
+            if(this.library.get(i).getTitle().equals(title)){
+                count+=1;
+                this.selectedBook=this.library.get(i);
+                this.displayBook2();
             }
         }
-        
+        if(count==0){
+            this.choice();
+        }
     }
     public void choice(){
+        Scanner kbReader=new Scanner(System.in);
+        System.out.println("Seems like this book is unavailable at this moment, what would you like to do?\n1. Try again\n2. Back");
+        String choice=kbReader.next();
+        if(choice.equals("1")){
+            this.search();
+        }
+        else if(choice.equals("2")){
+            this.userPage();
+        }
+        else{
+            System.out.println("Not an option, please try again");
+            this.choice();
+        }
+    }
+    public void displayBook2(){
         
+        System.out.println(this.selectedBook.getInfo());
+        this.decision2();
+    }
+    public void decision2(){
+        Scanner kbReader=new Scanner(System.in);
+        System.out.println("What would you like to do?\n1. Borrow\n2. Back");
+        String choice=kbReader.next();
+        if(choice.equals("1")){
+            
+            //this.currentUser.addBook(this.selectedBook);
+            for(int i=0; i<this.library.size(); i++){
+                if(this.library.get(i)==this.selectedBook){
+                    this.library.remove(i);
+                }
+            }
+            //this.displayVisible();
+            this.currentUser.addBook(this.selectedBook);
+            this.message2();
+        }
+        else if(choice.equals("2")){
+            this.userPage();
+        }
+        else{
+            System.out.println("Not an option");
+            this.decision2();
+        }
+    }
+    public void message2(){
+        Scanner kbReader=new Scanner(System.in);
+        System.out.println("This book has been borrowed\n1. Back");
+        this.userPage();
+    }
+    public void viewMyBooks(){
+        int count=0;
+        for(int i=0; i<this.currentUser.getBooks().size(); i++){
+            count+=1;
+            System.out.println(count+". "+this.currentUser.getBooks().get(i).getTitle());
+            this.currentUser.getBooks().get(i).setIndex(count);
+        }
+        this.myOptions();
+    }
+    public void myOptions(){
+        Scanner kbReader=new Scanner(System.in);
+        System.out.println("What would you like to do?\n1. Back\n2. Select Book");
+        String choice=kbReader.next();
+        if(choice.equals("1")){
+            this.userPage();
+        }
+        else if(choice.equals("2")){
+            System.out.println("Which book?(Enter a number)");
+            int index=kbReader.nextInt();
+            int count=0;
+            for(int i=0; i<this.currentUser.getBooks().size(); i++){
+                if(this.currentUser.getBooks().get(i).getIndex()==index){
+                    this.selectedBook=this.currentUser.getBooks().get(i);
+                    count+=1;
+                    this.viewMyBook();
+                }
+            }
+            if(count==0){
+                System.out.println("Seems like this book is not available, please try again");
+                this.myOptions();
+            }
+        }
+        else{
+            System.out.println("Not an option, please try again");
+            this.myOptions();
+        }
+    }
+    public void viewMyBook(){
+        System.out.println(this.selectedBook.getTitle());
+        this.returnOptions();
+    }
+    
+    public void returnOptions(){
+        Scanner kbReader=new Scanner(System.in);
+        System.out.println("1. Return\n2. Back");
+        String choice=kbReader.next();
+        if(choice.equals("1")){
+            /*
+            this.library.add(this.selectedBook);
+            for(int i=0; i<this.currentUser.getBooks().size(); i++){
+                if(this.currentUser.getBooks().get(i)==this.selectedBook){
+                    this.currentUser.getBooks().remove(i);
+                }
+            }
+            this.selectedBook=null;
+            System.out.println("This book has been returned");
+            */
+            System.out.println("Return");
+        }
+        else if(choice.equals("2")){
+            this.myOptions();
+        }
+        else{
+            System.out.println("Not an option, please try again");
+            this.returnOptions();
+        }
     }
     
     
