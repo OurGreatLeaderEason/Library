@@ -16,6 +16,7 @@ public class Account{
         this.username=name;
         this.password=pass;
         this.status=status;
+        this.books=new ArrayList<Book>();
    
         
     }
@@ -44,7 +45,7 @@ public class Account{
         return this.status;
     }
     
-    public void setBoosk(ArrayList<Book> books){
+    public void setBooks(ArrayList<Book> books){
         this.books=books;
     }
     
