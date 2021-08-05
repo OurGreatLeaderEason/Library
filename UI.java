@@ -536,7 +536,7 @@ public class UI{
         System.out.println("What would you like to do?\n1. Back\n2. Change Visibility");
         String choice=kbReader.next();
         if(choice.equals("1")){
-            this.adminSearch();
+            this.adminPage();
         }
         else if(choice.equals("2")){
             if(this.selectedBook.getVisibility()==false){
@@ -555,13 +555,19 @@ public class UI{
     }
     //Check returned book list
     public void displayReturned(){
-        int count=1;
-        for(int i=0; i<this.returned.size(); i++){
-            System.out.println(count+". "+this.returned.get(i).getTitle());
-            this.returned.get(i).setIndex(count);
-            count+=1;
+        if(this.returned.size()==0){
+            System.out.println("There are no returned books");
+            this.adminPage();
         }
-        this.returnDecision();
+        else{
+            int count=1;
+            for(int i=0; i<this.returned.size(); i++){
+                System.out.println(count+". "+this.returned.get(i).getTitle());
+                this.returned.get(i).setIndex(count);
+                count+=1;
+            }
+            this.returnDecision();
+        }
     }
     
     public void returnDecision(){
@@ -592,7 +598,7 @@ public class UI{
             }
         }
         else{
-            System.out.println("This book does is not returned, please try again");
+            System.out.println("This book is not returned, please try again");
             this.adminPage();
         }
     }
@@ -616,6 +622,8 @@ public class UI{
                     this.returned.remove(i);
                 }
             }
+            System.out.println("This book has been returned");
+            this.displayReturned();
         }
         else{
             System.out.println("Not an option, please try again");
