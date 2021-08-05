@@ -18,8 +18,8 @@ public class UI{
         
         
             Scanner kbReader=new Scanner(System.in);
-            System.out.println("\nWelcome to the library");
-            System.out.println("1. Register\n2. Login\n3. Power off");
+            System.out.println("\n?????????");
+            System.out.println("1. ??\n2. ??\n3. ??");
             String option=kbReader.next();
             if(option.equals("1")){
                 this.register();
@@ -28,21 +28,21 @@ public class UI{
                 this.login();
             }
             else if(option.equals("3")){
-                System.out.println("Powered Off");
+                System.out.println("???");
                 
                 
                 
                 System.exit(0);
             }
             else{
-                System.out.println("Not a valid option");
+                System.out.println("?????????");
                 this.main();
             }
     }
     public void register(){
         boolean status;
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What kind of account do you wish to create?\n1. Admin\n2. User");
+        System.out.println("??????\n1. ???\n2. ??");
         String option=kbReader.next();
         if(option.equals("1")){
             status=true;
@@ -52,12 +52,12 @@ public class UI{
             
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("?????????");
             
             this.register();
             status=true;
         }
-        System.out.println("Please enter a username");
+        System.out.println("??????");
         String username=kbReader.next();
         int duplicate=0;
         for(Account account:accounts){
@@ -67,22 +67,22 @@ public class UI{
         }
        
         if(duplicate==0){
-            System.out.println("Please enter a password");
+            System.out.println("?????");
             String password=kbReader.next();
             Account account=new Account(username, password, status);
             this.accounts.add(account);
-            System.out.println("Registration complete, now returning to the main page");
+            System.out.println("???????????");
             
             this.main();
         }
         else{
-            System.out.println("This username already exists, please try again");
+            System.out.println("???????");
             this.register();
         }
     }
     public void login(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("Please enter your username");
+        System.out.println("??????");
         String username=kbReader.next();
         int bruh=0;
         for(int i=0; i<this.accounts.size(); i++){
@@ -91,12 +91,12 @@ public class UI{
             }
         }
         if(bruh>0){
-            System.out.println("Please enter your password");
+            System.out.println("?????");
             String password=kbReader.next();
             for(int i=0; i<this.accounts.size(); i++){
                 if(this.accounts.get(i).getUsername().equals(username)){
                     if(password.equals(this.accounts.get(i).getPassword())){
-                        System.out.println("Login successful, now redirecting to your home page");
+                        System.out.println("?????");
                         this.currentUser=this.accounts.get(i);
                         if(this.currentUser.isAdmin()==true){
                             this.adminPage();
@@ -119,7 +119,7 @@ public class UI{
     }
     public void wrongPassword(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("The password is incorrect, what would you like to do?\n1. Try again\n2. Go back");
+        System.out.println("?????\n1. ??\n2. ??");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.login();
@@ -128,14 +128,14 @@ public class UI{
             this.main();
         }
         else{
-            System.out.println("Not an option");
+            System.out.println("?????????");
             this.wrongPassword();
         }
     
     }
     public void wrongUsername(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("The user cannot be found, what would you like to do?\n1. Try again\n2. Go back");
+        System.out.println("???????\n1. ??\n2. ??");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.login();
@@ -144,14 +144,14 @@ public class UI{
             this.main();
         }
         else{
-            System.out.println("Not an option");
+            System.out.println("?????????");
             this.wrongUsername();
         }
     }
     //to be implemented
     public void userPage(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Display all available books\n2. Search book\n3. View my books\n4. Log off");
+        System.out.println("1. ??????\n2. ????\n3. ??????\n4. ??");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.displayVisible();
@@ -168,7 +168,7 @@ public class UI{
             this.main();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("?????????");
             this.userPage();
         }
     }
@@ -192,14 +192,14 @@ public class UI{
     }
     public void displayVoptions(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Back\n2. Select Book");
+        System.out.println("1. ??\n2. ????");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.userPage();
             
         }
         else if(choice.equals("2")){
-            System.out.println("Which book?(Enter a number)");
+            System.out.println("?????(??????)");
             int index=kbReader.nextInt();
             int count=0;
             for(int i=0; i<this.library.size(); i++){
@@ -210,12 +210,12 @@ public class UI{
                 }
             }
             if(count==0){
-                System.out.println("Seems like this book is not available, please try again");
+                System.out.println("?????");
                 this.displayVoptions();
             }
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("?????????");
             this.displayVoptions();
         }
     }
@@ -227,7 +227,7 @@ public class UI{
     }
     public void decision(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Borrow\n2. Back");
+        System.out.println("1. ??\n2. ??");
         String choice=kbReader.next();
         if(choice.equals("1")){
             
@@ -245,19 +245,19 @@ public class UI{
             this.displayVoptions();
         }
         else{
-            System.out.println("Not an option");
+            System.out.println("?????????");
             this.decision();
         }
     }
     public void message(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("This book has been borrowed");
+        System.out.println("????");
         String choice=kbReader.next();
         this.displayVisible();
     }
     public void search(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("Please enter the book's title");
+        System.out.println("?????");
         String title=kbReader.nextLine();
         int count=0;
         for(int i=0; i<this.library.size(); i++){
@@ -273,7 +273,7 @@ public class UI{
     }
     public void choice(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("Seems like this book is unavailable at this moment, what would you like to do?\n1. Try again\n2. Back");
+        System.out.println("??????\n1. ??\n2. ??");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.search();
@@ -282,7 +282,7 @@ public class UI{
             this.userPage();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("?????????");
             this.choice();
         }
     }
