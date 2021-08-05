@@ -18,8 +18,8 @@ public class UI{
         
         
             Scanner kbReader=new Scanner(System.in);
-            System.out.println("\n?????????");
-            System.out.println("1. ??\n2. ??\n3. ??");
+            System.out.println("\n欢迎来到图书馆程序");
+            System.out.println("1. 注册\n2. 登录\n3. 关机");
             String option=kbReader.next();
             if(option.equals("1")){
                 this.register();
@@ -28,21 +28,21 @@ public class UI{
                 this.login();
             }
             else if(option.equals("3")){
-                System.out.println("???");
+                System.out.println("已关机");
                 
                 
                 
                 System.exit(0);
             }
             else{
-                System.out.println("?????????");
+                System.out.println("选项不存在，请重试");
                 this.main();
             }
     }
     public void register(){
         boolean status;
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("??????\n1. ???\n2. ??");
+        System.out.println("选择账号类型\n1. 管理员\n2. 用户");
         String option=kbReader.next();
         if(option.equals("1")){
             status=true;
@@ -52,12 +52,12 @@ public class UI{
             
         }
         else{
-            System.out.println("?????????");
+            System.out.println("选项不存在，请重试");
             
             this.register();
             status=true;
         }
-        System.out.println("??????");
+        System.out.println("请输入用户名");
         String username=kbReader.next();
         int duplicate=0;
         for(Account account:accounts){
@@ -67,22 +67,22 @@ public class UI{
         }
        
         if(duplicate==0){
-            System.out.println("?????");
+            System.out.println("请输入密码");
             String password=kbReader.next();
             Account account=new Account(username, password, status);
             this.accounts.add(account);
-            System.out.println("???????????");
+            System.out.println("注册完成，返回登录页面");
             
             this.main();
         }
         else{
-            System.out.println("???????");
+            System.out.println("该用户名已存在");
             this.register();
         }
     }
     public void login(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("??????");
+        System.out.println("请输入用户名");
         String username=kbReader.next();
         int bruh=0;
         for(int i=0; i<this.accounts.size(); i++){
@@ -91,12 +91,12 @@ public class UI{
             }
         }
         if(bruh>0){
-            System.out.println("?????");
+            System.out.println("请输入密码");
             String password=kbReader.next();
             for(int i=0; i<this.accounts.size(); i++){
                 if(this.accounts.get(i).getUsername().equals(username)){
                     if(password.equals(this.accounts.get(i).getPassword())){
-                        System.out.println("?????");
+                        System.out.println("登录成功，");
                         this.currentUser=this.accounts.get(i);
                         if(this.currentUser.isAdmin()==true){
                             this.adminPage();
@@ -119,7 +119,7 @@ public class UI{
     }
     public void wrongPassword(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("?????\n1. ??\n2. ??");
+        System.out.println("密码错误?\n1. 重试\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.login();
@@ -128,14 +128,14 @@ public class UI{
             this.main();
         }
         else{
-            System.out.println("?????????");
+            System.out.println("选项不存在，请重试");
             this.wrongPassword();
         }
     
     }
     public void wrongUsername(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("???????\n1. ??\n2. ??");
+        System.out.println("该用户不存在?\n1. 重试\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.login();
@@ -144,14 +144,14 @@ public class UI{
             this.main();
         }
         else{
-            System.out.println("?????????");
+            System.out.println("选项不存在，请重试");
             this.wrongUsername();
         }
     }
     //to be implemented
     public void userPage(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. ??????\n2. ????\n3. ??????\n4. ??");
+        System.out.println("1. 查看所有书籍\n2. 搜索图书\n3. 查看我的图书\n4. 注销");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.displayVisible();
@@ -168,7 +168,7 @@ public class UI{
             this.main();
         }
         else{
-            System.out.println("?????????");
+            System.out.println("选项不存在，请重试");
             this.userPage();
         }
     }
@@ -192,14 +192,14 @@ public class UI{
     }
     public void displayVoptions(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. ??\n2. ????");
+        System.out.println("1. 返回\n2. 选择图书");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.userPage();
             
         }
         else if(choice.equals("2")){
-            System.out.println("?????(??????)");
+            System.out.println("选那本书?(输入图书编号)");
             int index=kbReader.nextInt();
             int count=0;
             for(int i=0; i<this.library.size(); i++){
@@ -210,12 +210,12 @@ public class UI{
                 }
             }
             if(count==0){
-                System.out.println("?????");
+                System.out.println("没有这本书");
                 this.displayVoptions();
             }
         }
         else{
-            System.out.println("?????????");
+            System.out.println("选项不存在，请重试");
             this.displayVoptions();
         }
     }
@@ -227,7 +227,7 @@ public class UI{
     }
     public void decision(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. ??\n2. ??");
+        System.out.println("1. 借书\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             
@@ -245,19 +245,19 @@ public class UI{
             this.displayVoptions();
         }
         else{
-            System.out.println("?????????");
+            System.out.println("选项不存在，请重试");
             this.decision();
         }
     }
     public void message(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("????");
+        System.out.println("借书成功");
         String choice=kbReader.next();
         this.displayVisible();
     }
     public void search(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("?????");
+        System.out.println("请输入书名");
         String title=kbReader.nextLine();
         int count=0;
         for(int i=0; i<this.library.size(); i++){
@@ -273,7 +273,7 @@ public class UI{
     }
     public void choice(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("??????\n1. ??\n2. ??");
+        System.out.println("没有这本书?\n1. 重试\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.search();
@@ -282,7 +282,7 @@ public class UI{
             this.userPage();
         }
         else{
-            System.out.println("?????????");
+            System.out.println("选项不存在，请重试");
             this.choice();
         }
     }
@@ -293,7 +293,7 @@ public class UI{
     }
     public void decision2(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Borrow\n2. Back");
+        System.out.println("1. 借书\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             
@@ -311,18 +311,18 @@ public class UI{
             this.userPage();
         }
         else{
-            System.out.println("Not an option");
+            System.out.println("选项不存在，请重试");
             this.decision2();
         }
     }
     public void message2(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("This book has been borrowed");
+        System.out.println("借书成功");
         this.userPage();
     }
     public void viewMyBooks(){
         if(this.currentUser.getBooks().size()==0){
-            System.out.println("It appears that you don't have any books");
+            System.out.println("您没有借书");
             this.userPage();
         }
         else{
@@ -337,13 +337,13 @@ public class UI{
     }
     public void myOptions(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Back\n2. Select Book");
+        System.out.println("1. 返回\n2. 选择图书");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.userPage();
         }
         else if(choice.equals("2")){
-            System.out.println("Which book?(Enter a number)");
+            System.out.println("那本书?(输入编号)");
             int index=kbReader.nextInt();
             int count=0;
             for(int i=0; i<this.currentUser.getBooks().size(); i++){
@@ -354,12 +354,12 @@ public class UI{
                 }
             }
             if(count==0){
-                System.out.println("Seems like this book is not available, please try again");
+                System.out.println("没有这本书，请重试");
                 this.myOptions();
             }
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
             this.myOptions();
         }
     }
@@ -381,21 +381,21 @@ public class UI{
                 }
             }
             this.selectedBook=null;
-            System.out.println("The book has been returned");
+            System.out.println("还书成功");
             this.myOptions();
         }
         else if(choice.equals("2")){
             this.myOptions();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
             this.returnOptions();
         }
     }
     //Admin------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public void adminPage(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Display all books\n2. Search Books\n3. View Returned Books\n4. Log off");
+        System.out.println("1. 查看所有书籍\n2. 搜索图书\n3. 查看已归还的书籍\n4. 注销");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.displayAllBooks();
@@ -411,7 +411,7 @@ public class UI{
             this.main();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
             this.adminPage();
         }
     }
@@ -431,7 +431,7 @@ public class UI{
     
     public void opciones(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Back\n2. Select Book");
+        System.out.println("n1. 返回\n2. 选择书籍");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.adminPage();
@@ -440,14 +440,14 @@ public class UI{
             this.selectDisplayBook();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
             this.opciones();
         }
     }
     
     public void selectDisplayBook(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("Which book would you like to choose?(Enter a number)");
+        System.out.println("那本书?(请输入编号)");
         int choice=kbReader.nextInt();
         int index=choice-1;
         if(choice>=1&&choice<=this.library.size()){
@@ -455,7 +455,7 @@ public class UI{
             this.adminDisplayBook();
         }
         else{
-            System.out.println("Seemes like this book is unavailable, please try again");
+            System.out.println("没有这本书，请重试");
             this.selectDisplayBook();
         }
         
@@ -463,14 +463,14 @@ public class UI{
     
     public void adminDisplayBook(){
         System.out.println(this.selectedBook.getInfo());
-        System.out.println("Visibility: "+this.selectedBook.getVisibility());
+        System.out.println("能见度: "+this.selectedBook.getVisibility());
         this.bookOptions();
         
     }
     
     public void bookOptions(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Back\n2. Change Visibility");
+        System.out.println("1. 返回\n2. 更改能见度");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.selectDisplayBook();
@@ -482,18 +482,18 @@ public class UI{
             else{
                 this.selectedBook.setVisibility(false);
             }
-            System.out.println("This book's visibility is now "+this.selectedBook.getVisibility());
+            System.out.println("这本书的能见度现在是 "+this.selectedBook.getVisibility());
             this.opciones();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
             this.opciones();
         }
     }
     //search function for admin
     public void adminSearch(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("Enter a book's name");
+        System.out.println("请输入书名");
         String title=kbReader.nextLine();
         int count=0;
         for(int i=0; i<this.library.size(); i++){
@@ -510,7 +510,7 @@ public class UI{
     
     public void adminSearchUnavailable(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("Seems like this book is not available, would you like to try again?\n1. Back\n2. Try Again");
+        System.out.println("没有这本书\n1. 返回\n2. 重试");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.adminPage();
@@ -519,21 +519,21 @@ public class UI{
             this.adminSearch();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
             this.adminSearchUnavailable();
         }
     }
     
     public void adminDisplayBook2(){
         System.out.println(this.selectedBook.getInfo());
-        System.out.println("Visibility: "+this.selectedBook.getVisibility());
+        System.out.println("能见度: "+this.selectedBook.getVisibility());
         this.bookOptions2();
         
     }
     
     public void bookOptions2(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Back\n2. Change Visibility");
+        System.out.println("1. 返回\n2. 更改能见度");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.adminPage();
@@ -545,18 +545,18 @@ public class UI{
             else{
                 this.selectedBook.setVisibility(false);
             }
-            System.out.println("This book's visibility is now "+this.selectedBook.getVisibility());
+            System.out.println("这本书的能见度现在是 "+this.selectedBook.getVisibility());
             this.adminPage();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
             this.bookOptions2();
         }
     }
     //Check returned book list
     public void displayReturned(){
         if(this.returned.size()==0){
-            System.out.println("There are no returned books");
+            System.out.println("没有已归还图书");
             this.adminPage();
         }
         else{
@@ -572,7 +572,7 @@ public class UI{
     
     public void returnDecision(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do?\n1. Back\n2. Select Book");
+        System.out.println("1. 返回\n2. 选择图书");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.adminPage();
@@ -581,13 +581,13 @@ public class UI{
             this.selectReturnedBook();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
         }
     }
     
     public void selectReturnedBook(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("Which book?(Enter a number)");
+        System.out.println("那本书?(请输入编号)");
         int choice=kbReader.nextInt();
         if(choice>=1&&choice<=this.returned.size()){
             for(int i=0; i<this.returned.size(); i++){
@@ -598,7 +598,7 @@ public class UI{
             }
         }
         else{
-            System.out.println("This book is not returned, please try again");
+            System.out.println("这本书没有被归还");
             this.adminPage();
         }
     }
@@ -610,7 +610,7 @@ public class UI{
     
     public void finaldecision(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("What would you like to do with this book?\n1. Back\n2. Return to Library");
+        System.out.println("1. 返回\n2. 入库图书");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.displayReturned();
@@ -622,11 +622,11 @@ public class UI{
                     this.returned.remove(i);
                 }
             }
-            System.out.println("This book has been returned");
+            System.out.println("图书已入库");
             this.displayReturned();
         }
         else{
-            System.out.println("Not an option, please try again");
+            System.out.println("选项不存在，请重试");
             this.finaldecision();
         }
     }
