@@ -192,7 +192,7 @@ public class UI{
     }
     public void displayVoptions(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. 返回\n2. 选择图书");
+        System.out.println("----------------------\n1. 返回\n2. 选择图书");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.userPage();
@@ -227,7 +227,7 @@ public class UI{
     }
     public void decision(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. 借书\n2. 返回");
+        System.out.println("-------------------\n1. 借书\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             
@@ -273,7 +273,7 @@ public class UI{
     }
     public void choice(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("没有这本书?\n1. 重试\n2. 返回");
+        System.out.println("没有这本书\n1. 重试\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.search();
@@ -337,7 +337,7 @@ public class UI{
     }
     public void myOptions(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. 返回\n2. 选择图书");
+        System.out.println("-------------------\n1. 返回\n2. 选择图书");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.userPage();
@@ -431,7 +431,7 @@ public class UI{
     
     public void opciones(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("n1. 返回\n2. 选择书籍");
+        System.out.println("-------------------\n1. 返回\n2. 选择书籍");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.adminPage();
@@ -470,7 +470,7 @@ public class UI{
     
     public void bookOptions(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. 返回\n2. 更改能见度");
+        System.out.println("-------------------\n1. 返回\n2. 更改能见度");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.selectDisplayBook();
@@ -533,7 +533,7 @@ public class UI{
     
     public void bookOptions2(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. 返回\n2. 更改能见度");
+        System.out.println("-------------------\n1. 返回\n2. 更改能见度");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.adminPage();
@@ -572,7 +572,7 @@ public class UI{
     
     public void returnDecision(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. 返回\n2. 选择图书");
+        System.out.println("-------------------\n1. 返回\n2. 选择图书");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.adminPage();
@@ -610,7 +610,7 @@ public class UI{
     
     public void finaldecision(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. 返回\n2. 入库图书");
+        System.out.println("-------------------\n1. 返回\n2. 入库图书");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.displayReturned();
