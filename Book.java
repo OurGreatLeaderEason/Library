@@ -1,6 +1,6 @@
 public class Book{
     private String title;
-    private int index;
+    public int index;
     private boolean visible;
     private String info;
     /**
@@ -33,6 +33,10 @@ public class Book{
     }
     public void setIndex(int index){
         this.index=index;
+    }
+    
+    public void setVisibility(boolean visibility){
+        this.visible=visibility;
     }
     
     
