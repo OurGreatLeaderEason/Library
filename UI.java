@@ -135,7 +135,7 @@ public class UI{
     }
     public void wrongUsername(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("该用户不存在?\n1. 重试\n2. 返回");
+        System.out.println("该用户不存在\n1. 重试\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             this.login();
@@ -293,7 +293,7 @@ public class UI{
     }
     public void decision2(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. 借书\n2. 返回");
+        System.out.println("-------------------\n1. 借书\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             
@@ -370,7 +370,7 @@ public class UI{
     
     public void returnOptions(){
         Scanner kbReader=new Scanner(System.in);
-        System.out.println("1. Return\n2. Back");
+        System.out.println("-------------------\n1. 还书\n2. 返回");
         String choice=kbReader.next();
         if(choice.equals("1")){
             
