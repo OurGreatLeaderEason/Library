@@ -2,11 +2,11 @@ import java.util.ArrayList;
 public class main{
     public static void main(String args[]){
         ArrayList<Book> books=new ArrayList<Book>();
-        books.add(new Book("The State and Revolution", "The State and Revolution (1917) is a book by Vladimir Lenin describing the role of the state in society, the necessity of proletarian\n revolution, and the theoretic inadequacies of social democracy in achieving revolution to establish the dictatorship of the proletariat.", true));
-        books.add(new Book("On Protracted War", "On Protracted War is a work comprising a series of speeches by Mao Zedong given from 1938 May 26 to June 3 at the Yenan Association for the\n Study of the War of Resistance Against Japan. In it, he calls for a protracted people's war, as a means for small revolutionary groups to fight the power of the state.", false));
-        books.add(new Book("Das Kapital", "Das Kapital is a foundational theoretical text in materialist philosophy, economics and politics by Karl Marx. Marx aimed to reveal the economic\n patterns underpinning the capitalist mode of production in contrast to classical political economists such as Adam Smith, Jean-Baptiste Say, David Ricardo and John Stuart Mill.", true));
-        books.add(new Book("The Motorcycle Diaries", "The Motorcycle Diaries is a memoir of the Marxist revolutionary Ernesto \"Che\" Guevara. It traces his early travels, as a 23-year-old\n medical student, with his friend Alberto Granado, a 29-year-old biochemist. Leaving Buenos Aires, Argentina, in January 1952 on the back of a sputtering single cylinder 1939 Norton 500cc dubbed La Poderosa, they desired to explore the South America they only knew from books.", true));
-        books.add(new Book("The Communist Manifesto", "The Communist Manifesto summarises Marx and Engels' theories concerning the nature of society and politics. It also briefly features their\n ideas for how the capitalist society of the time would eventually be replaced by socialism.", true));
+        books.add(new Book("国家与革命", "《国家与革命》是弗拉基米尔·列宁于1917年8月至9月在芬兰避难时所写的著作。它是1917年俄国革命第一阶段（二月革命）与第二阶段（十月革命）中间诞生的决定性著作。", true));
+        books.add(new Book("论持久战", "《论持久战》是毛泽东于1938年5月26日至6月3日，在延安抗日战争研究会上的演讲稿，是关于中国抗日战争方针的军事政治著作。毛泽东在总结抗日战争初期经验的基础上，\n针对中国国民党内部分人的“中国必亡论”和“中国速胜论”，以及中国共产党内部分人轻视游击战的倾向，系统地阐述了中国实行持久战以获得对日胜利的战略。", true));
+        books.add(new Book("资本论", "《资本论》是由卡尔·马克思著作、弗里德里希·恩格斯编辑的一部历史唯物主义哲学和政治经济学的马克思基础理论文本。\n第一卷初版于1867年。这部作品对资本主义进行了批判性的分析，对日后社会科学和人文科学的诸多领域有着深远影响。", true));
+        books.add(new Book("摩托日记", "《摩托日记》是一本回忆录，记述了马克思主义革命者埃内斯托·切·格瓦拉的早年旅行，23岁的医科学生格瓦拉以及他的朋友29岁的生物化学家阿尔贝托·格拉纳多，1952年1月离开布宜诺斯艾利斯，\n骑着1939 Norton摩托 500 CC的La Poderosa（“大力神”）单缸摩托，他们希望探索只能从书上知道的南美洲。", true));
+        books.add(new Book("共产主义宣言", "《共产主义宣言》是德国哲学家卡尔·马克思和弗里德里希·恩格斯在1848年发表的政治文件。该宣言受共产主义联盟委托，最初于1848年革命爆发时在伦敦出版，后来被确认为世界上最有影响力的政治文件之一。\n它为阶级斗争（历史的和当时的）以及资本主义和资本主义生产方式的冲突提供了一种分析方法，而不是对共产主义的潜在未来形式的预测。", true));
         UI ui=new UI(books, new ArrayList<Book>(), new ArrayList<Account>());
         ui.main();
     }
